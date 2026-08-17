@@ -3,7 +3,7 @@
  * Plugin Name: WP SMTP Manager
  * Plugin URI: https://github.com/immdraselkhan/wp-smtp-manager
  * Description: Lightweight SMTP delivery manager with a clean admin UI, test email, debug logging, HELO control, and secure password storage.
- * Version: 1.4.0
+ * Version: 1.5.0
  * Author: Md Rasel Khan
  * Author URI: https://raselkhan.dev
  * Text Domain: wp-smtp-manager
@@ -25,7 +25,7 @@ final class WP_SMTP_Manager
     const PAGE_SLUG   = 'wp-smtp-manager';
     const HISTORY_KEY = 'nhsmtp_mail_history';
     const STATUS_KEY  = 'nhsmtp_mail_status';
-    const VERSION     = '1.4.0';
+    const VERSION     = '1.5.0';
 
     private static $instance = null;
 
@@ -983,10 +983,12 @@ final class WP_SMTP_Manager
             return;
         }
 
+        wp_enqueue_style('wp-components');
+
         wp_enqueue_style(
             'nhsmtp-admin',
             plugin_dir_url(__FILE__) . 'assets/admin.css',
-            [],
+            ['wp-components'],
             self::VERSION
         );
     }
